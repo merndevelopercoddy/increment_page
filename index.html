@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Incrementing Numbers</title>
+    <link rel="stylesheet" href="styles.css">
+    <style type="text/css" media="print">
+        @page {
+            size: A4;
+            margin: 1cm;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+            text-align: center;
+        }
+
+        #incrementingNumber {
+            font-size: 24px;
+            font-weight: bold;
+            color: #333;
+            position: absolute;
+            bottom:0;
+            left:0;
+        }
+
+        .page-number::after {
+            content: " - Page " counter(page);
+        }
+    </style>
+</head>
+<body>
+    <div id="incrementingNumber">AA011001</div>
+    <button onclick="chopetish()">Chop etish</button>
+</body>
+</html>
+<script>
+    const chopetish = ()=>{
+        let currentNumber = 11001;  // Starting number
+const endNumber = 12000;   // Ending number
+
+function updateNumber() {
+    const formattedNumber = `AA${currentNumber.toString().padStart(6, '0')}`;
+    document.getElementById('incrementingNumber').textContent = formattedNumber;
+
+    if (currentNumber < endNumber) {
+        currentNumber++;
+        window.print();  // Print the page
+    } else {
+        clearInterval(intervalId);  // Stop updating when reaching the end
+    }
+}
+
+// Update the number every 100 milliseconds (adjust as needed)
+const intervalId = setInterval(updateNumber, 100);
+    }
+
+
+</script>
