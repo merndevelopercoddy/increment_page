@@ -19,7 +19,7 @@
         }
 
         #incrementingNumber {
-            font-size: 24px;
+            font-size: 20px;
             font-weight: bold;
             color: #333;
             position: absolute;
@@ -30,11 +30,14 @@
         .page-number::after {
             content: " - Page " counter(page);
         }
+        .tugma{
+            display: none;
+        }
     </style>
 </head>
 <body>
     <div id="incrementingNumber">AA011001</div>
-    <button onclick="chopetish()">Chop etish</button>
+    <button class="tugma" onclick="chopetish()">Chop etish</button>
 </body>
 </html>
 <script>
@@ -44,6 +47,7 @@ const endNumber = 12000;   // Ending number
 
 function updateNumber() {
     const formattedNumber = `AA${currentNumber.toString().padStart(6, '0')}`;
+    
     document.getElementById('incrementingNumber').textContent = formattedNumber;
 
     if (currentNumber < endNumber) {
